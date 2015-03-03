@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'links#index'
 
+  resources :links do
+    member do
+        # calls the upvote and downvote method respectively 
+      put "like", to: "links#upvote"
+      put "dislike", to: "links#downvote"
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
